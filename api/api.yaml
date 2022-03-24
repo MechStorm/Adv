@@ -1,0 +1,40 @@
+swagger: "2.0"
+info:
+  version: "0.1.0"
+  title: Adv Service
+  description: Service which provides advertisement
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /info:
+    get:
+      description: Get advertisement info
+      summary: getAdv
+      tags:
+        - adv
+      operationId: getAdv
+      deprecated: false
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Adv info
+          schema:
+            $ref: "#/definitions/info"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/Error"

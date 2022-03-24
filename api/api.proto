@@ -1,0 +1,65 @@
+syntax = "proto3";
+package pb
+option go_package = "MechStorm/advApp/internal/pb";
+
+import "google/api/annotations.proto";
+
+service Adv {
+    rpc GetInfo(GetInfoRequest) returns (GetInfoResponse) {
+        option (google.api.http) = {
+            get: "/info"
+        };
+    }
+    rpc AddAvd(AddAdvRequest) returns (AddAdvResponse) {
+        option (google.api.http) = {
+            post: "/add"
+            body: "*"
+        };
+    }
+    rpc RefreshAdv(RefreshAdvRequest) returns (RefreshAdvResponse) {
+        option (google.api.http) = {
+            put: "/refresh"
+            body: "*"
+        };
+    }
+    rpc DeleteAdv(DeleteAdvRequest) returns (DeleteAdvResponse) {
+        option (google.api.http) = {
+            delete: "/delete/{post_id}"
+        };
+    }
+}
+
+message GetInfoRequest {
+
+}
+
+message GetInfoResponse {
+    id int64 = 1;
+   string cpm  = 2;
+   string title = 3;
+   string descr = 4;
+}
+
+message AddAdvRequest {
+    string adv = 1;
+}
+
+message AddAdvResponse {
+    string answer = 1;
+}
+
+message RefreshAdvRequest {
+    string refresh_token = 1;
+}
+
+message RefreshAdvResponse {
+    string refresh_token = 1;
+}
+
+message DeleteAdvRequest {
+    string post_id = 1;
+}
+
+message DeleteAdvResponse {
+    string del_info = 1;
+}
